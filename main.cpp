@@ -11,6 +11,7 @@ class mainWindow : public Window
      
   protected: 
     void on_button_clicked();
+    void secondWindowMethod();
 
   private:
     Fixed fixed;
@@ -21,6 +22,7 @@ class mainWindow : public Window
     Entry e_start;
     Entry e_end;
     Button s_button;
+    Window secondWindow;
 };
 
 mainWindow::mainWindow()
@@ -60,9 +62,34 @@ mainWindow::mainWindow()
   show_all();
 }
 
-void mainWindow::on_button_clicked() {
-  cout << "button clicked" << endl;
+void mainWindow::secondWindowMethod()
+{
+    secondWindow.set_title("Second Window");
+    secondWindow.set_default_size(400, 300);
+    secondWindow.set_border_width(10);
+    secondWindow.show();
 }
+
+void mainWindow::on_button_clicked() {
+  string start = e_start.get_text();
+  string end = e_end.get_text();
+
+  if (start == "asdf")
+  {
+    secondWindowMethod();
+
+  } else 
+  {
+    cout << "error";
+  }
+
+  // if (start == "asdf") {
+  //   cout << start  << endl;
+  //   cout << end  << endl;
+  // }
+}
+
+
 
 int main(int argc, char* argv[])
 {
@@ -71,7 +98,7 @@ int main(int argc, char* argv[])
   return app->run(window);
 
 }
-
+// g++ ##.cpp -o ## `pkg-config gtkmm-3.0 --cflags --libs`
 
 
 
